@@ -1,5 +1,8 @@
 import codecs
 
+
+
+
 def encode(s):
     if not isinstance(s,str):
         raise TypeError
@@ -8,7 +11,7 @@ def encode(s):
     digitmapping = dict(zip('1234567890!"#€%&/()=','!"#€%&/()=1234567890'))
     if len(s) > 1000:
         raise ValueError
-        
+    s = s.ljust(1000, 'x')    
     nordic = ["å", "ä", "ö"]
     
     for c in s:
@@ -27,7 +30,7 @@ def encode(s):
             raise ValueError
             
 
-    return crypted
+    return crypted[:origlen]
 
 def decode(s):
     return encode(s)
