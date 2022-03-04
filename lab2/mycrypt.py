@@ -8,7 +8,12 @@ def encode(s):
     digitmapping = dict(zip('1234567890!"#€%&/()=','!"#€%&/()=1234567890'))
     if len(s) > 1000:
         raise ValueError
+        
+    nordic = ["å", "ä", "ö"]
+    
     for c in s:
+        if c in nordic:
+            raise ValueError
         if c.isalpha():
             if c.islower():
                 c=c.upper()
@@ -18,6 +23,9 @@ def encode(s):
             crypted+=codecs.encode(c,'rot13')
         elif c in digitmapping:
           crypted+=digitmapping[c]
+        else:
+            raise ValueError
+            
 
     return crypted
 
