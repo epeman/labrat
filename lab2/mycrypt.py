@@ -3,6 +3,7 @@ import codecs
 
 
 
+
 def encode(s):
     if not isinstance(s,str):
         raise TypeError
